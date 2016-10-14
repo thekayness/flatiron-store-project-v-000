@@ -15,7 +15,9 @@ describe 'Feature Test: Cart', :type => :feature do
       end
 
      it "Lists all items in the cart" do
+       puts "@user.current cart #{@user.current_cart.id}"
        visit cart_path(@user.current_cart)
+
        expect(page).to have_content(@first_item.title)
        expect(page).to have_content(@second_item.title)
      end
