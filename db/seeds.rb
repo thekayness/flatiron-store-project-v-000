@@ -29,6 +29,3 @@ need.items << Item.create(title: "XXL Coffee Mug", inventory: 9, price: 12.50)
 mythical.items << Item.create(title: "Magic Coffee", inventory: 3, price: 300.00)
 mythical.items << Item.create(title: "Job Fruits", inventory: 3, price: 999.98)
 
-cart = Cart.new
-cart.save
-user1.carts << cart

@@ -30,7 +30,7 @@ RSpec.describe Item, :type => :model do
     end
     it "only returns items with inventory" do
       expect(Item.available_items).to_not include(Item.first)
-      expect(Item.available_items.count).to eq(9)
+      expect(Item.available_items.count).to eq(8)
     end
   end
 end

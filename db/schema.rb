@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20161013212058) do
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id"
+    t.string  "status",  default: "empty"
   end
 
   add_index "carts", ["user_id"], name: "index_carts_on_user_id"
@@ -42,6 +43,7 @@ ActiveRecord::Schema.define(version: 20161013212058) do
   add_index "line_items", ["item_id"], name: "index_line_items_on_item_id"
 
   create_table "users", force: :cascade do |t|
+    t.integer  "current_cart_id"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -56,6 +58,7 @@ ActiveRecord::Schema.define(version: 20161013212058) do
     t.datetime "updated_at",                          null: false
   end
 
+  add_index "users", ["current_cart_id"], name: "index_users_on_current_cart_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 

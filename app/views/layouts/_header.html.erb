@@ -11,9 +11,9 @@
         <% end %>
 
 
-       <% if user_signed_in? %>
+       <% if user_signed_in? && current_user.current_cart %>
        <h3>haaaaaaaaaaaaay</h3>
-          <li> <%= link_to "Cart", cart_path(current_user.current_cart.id) %></li>
+          <li> <%= link_to "Cart", cart_path(current_user.current_cart) %></li>
         <% end %>
 
     </ul>

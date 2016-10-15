@@ -15,16 +15,18 @@ class Cart < ActiveRecord::Base
 	end
 
 	def add_item(item_id)
-		line_item = LineItem.find_by(item_id: item_id)
+		line_item = LineItem.find_by(item_id: item_id, cart_id: self.id)
 		if line_item
-			if line_items.include?(line_item)
+				line_item.quantity += 1
+				line_item.save
 				line_item
-			else
-				line_items.build(:item_id => item_id)
-			end
 		else
 			line_items.build(:item_id => item_id)
 		end
+	end
+
+	def format_total_because_apparently_scale_still_truncates_0
+		"%.2f" % [total]
 	end
 	
 
